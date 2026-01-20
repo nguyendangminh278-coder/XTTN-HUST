@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tính điểm XTTN 2025 - Bách Khoa Hà Nội</title>
+    <title>Tính điểm XTTN 2026 - Bách Khoa Hà Nội</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,8 +39,8 @@
             <div class="inline-block bg-white/20 backdrop-blur-sm p-3 rounded-full mb-4 shadow-inner">
                 <i class="fas fa-graduation-cap text-3xl"></i>
             </div>
-            <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-wide mb-2">Tính Điểm XTTN 2025</h1>
-            <p class="text-hust-light font-light text-lg">Cập nhật theo QĐ 3560/QĐ-ĐHBK (Áp dụng từ 2025)</p>
+            <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-wide mb-2">Tính Điểm XTTN 2026</h1>
+            <p class="text-hust-light font-light text-lg">Dựa trên tiêu chí và điểm chuẩn 2025</p>
         </div>
     </div>
 
@@ -51,10 +51,10 @@
             <div class="flex items-start">
                 <div class="flex-shrink-0 text-yellow-500 mt-1"><i class="fas fa-info-circle text-xl"></i></div>
                 <div class="ml-3 flex-1">
-                    <h3 class="text-sm font-bold text-slate-800">Quy định mới 2025</h3>
+                    <h3 class="text-sm font-bold text-slate-800">Quy định mới</h3>
                     <p class="text-xs text-slate-600 mt-1">
-                        - <b>Điểm Thành tích</b> được cộng dồn các mục, tối đa 50đ.<br>
-                        - <b>Lưu ý:</b> Nếu đã dùng giải để tính điểm Thành tích chính thì KHÔNG được dùng giải đó tính điểm Thưởng (Trừ khi là giải khác môn/năm).<br>
+                        - <b>Điểm Thành tích:</b> Chỉ chọn 1 giải cao nhất (HSG/KHKT/Olympia) + Điểm Chuyên (nếu có). Tối đa 50đ.<br>
+                        - <b>Lưu ý:</b> Nếu đã dùng giải để tính điểm Thành tích chính thì KHÔNG được dùng giải đó tính điểm Thưởng.<br>
                         - <b>Điểm XTTN</b> = Điểm HSNL (sau khi đạt vòng phỏng vấn).
                     </p>
                 </div>
@@ -94,7 +94,7 @@
                     <div class="w-8 h-8 rounded-full bg-hust-light text-hust-red flex items-center justify-center mr-3 font-bold shadow-sm">2</div>
                     <div>
                         <h3 class="text-lg font-bold text-slate-700">Thành tích chính</h3>
-                        <p class="text-xs text-slate-500">Được cộng dồn các nhóm (VD: HSG + Chuyên)</p>
+                        <p class="text-xs text-slate-500">Chọn 1 giải cao nhất + Điểm Chuyên</p>
                     </div>
                 </div>
                 <span class="ml-auto text-xs font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Max 50đ</span>
@@ -102,9 +102,9 @@
             
             <div class="p-6 space-y-4">
                 <!-- Group 1: HSG -->
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all duration-300 hover:border-blue-300" id="group-hsg">
                     <label class="block text-sm font-bold text-slate-700 mb-2">1. Học sinh giỏi (Toán/Lý/Hóa/Sinh/Tin/Ngoại ngữ/Tổ hợp)</label>
-                    <select id="score_hsg" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="toggleBonusSection('hsg')">
+                    <select id="score_hsg" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="handleMainAchievementChange('hsg')">
                         <option value="0">-- Không có --</option>
                         <option value="50">Giải Nhất Quốc gia (50đ)</option>
                         <option value="45">Giải Nhì Quốc gia (45đ)</option>
@@ -118,9 +118,9 @@
                 </div>
 
                 <!-- Group 2: KHKT -->
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all duration-300 hover:border-purple-300" id="group-khkt">
                     <label class="block text-sm font-bold text-slate-700 mb-2">2. Khoa học kỹ thuật (ViSEF/ISEF)</label>
-                    <select id="score_khkt" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="toggleBonusSection('khkt')">
+                    <select id="score_khkt" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="handleMainAchievementChange('khkt')">
                         <option value="0">-- Không có --</option>
                         <option value="50">Giải Quốc tế (50đ)</option>
                         <option value="45">Giải Nhất Quốc gia (45đ)</option>
@@ -134,9 +134,9 @@
                 </div>
 
                 <!-- Group 3: Olympia -->
-                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 transition-all duration-300 hover:border-yellow-300" id="group-olympia">
                     <label class="block text-sm font-bold text-slate-700 mb-2">3. Đường lên đỉnh Olympia</label>
-                    <select id="score_olympia" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="toggleBonusSection('olympia')">
+                    <select id="score_olympia" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="handleMainAchievementChange('olympia')">
                         <option value="0">-- Không có --</option>
                         <option value="50">Vòng thi Năm (50đ)</option>
                         <option value="40">Vòng thi Quý (40đ)</option>
@@ -283,7 +283,7 @@
             </div>
         </div>
 
-        <!-- Section 4: Lưu ý Phỏng Vấn (Đã sửa: Bỏ input, chỉ hiển thị thông báo) -->
+        <!-- Section 4: Lưu ý Phỏng Vấn -->
         <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden animate-fade-in" style="animation-delay: 0.4s;">
             <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center">
                 <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 font-bold shadow-sm"><i class="fas fa-exclamation"></i></div>
@@ -350,18 +350,72 @@
 
     <!-- Scripts -->
     <script>
-        const majorScores = [
-            { major: "Khoa học Dữ liệu và Trí tuệ nhân tạo", score: 104.58 },
-            { major: "CNNT: Khoa học Máy tính", score: 103.89 },
-            { major: "CNNT: Kỹ thuật Máy tính", score: 98.30 },
-            { major: "An toàn không gian số", score: 102.60 },
-            { major: "Kỹ thuật điều khiển - Tự động hóa", score: 86.70 }
-        ];
-        
-        const majorScores2023 = [
-            { major: "Khoa học Dữ liệu & AI", score: 98.42 },
-            { major: "Khoa học Máy tính", score: 90.17 },
-            { major: "Kỹ thuật Máy tính", score: 85.35 }
+        const majorScores2025 = [
+            { code: "IT-E10", major: "Khoa học dữ liệu và Trí tuệ nhân tạo (CT tiên tiến)", score: 95.64 },
+            { code: "IT1", major: "CNTT: Khoa học Máy tính", score: 93.92 },
+            { code: "IT2", major: "CNTT: Kỹ thuật Máy tính", score: 89.62 },
+            { code: "IT-E15", major: "An toàn không gian số - Cyber Security (CT Tiên tiến)", score: 87.95 },
+            { code: "IT-E7", major: "Công nghệ thông tin (Global ICT)", score: 87.59 },
+            { code: "EE2", major: "Kỹ thuật Điều khiển - Tự động hoá", score: 85.44 },
+            { code: "MS2", major: "Kỹ thuật Vi điện tử và Công nghệ nano", score: 80.90 },
+            { code: "EE-E8", major: "Kỹ thuật Điều khiển - Tự động hoá (CT tiên tiến)", score: 78.24 },
+            { code: "ET1", major: "Kỹ thuật Điện tử - Viễn thông", score: 77.22 },
+            { code: "IT-E6", major: "Công nghệ thông tin (Việt - Nhật)", score: 75.17 },
+            { code: "ME1", major: "Kỹ thuật Cơ điện tử", score: 73.74 },
+            { code: "ET-E9", major: "Hệ thống nhúng thông minh và IoT (CT tiên tiến)", score: 72.71 },
+            { code: "IT-EP", major: "Công nghệ thông tin (Việt - Pháp)", score: 72.30 },
+            { code: "MI1", major: "Toán - Tin", score: 71.69 },
+            { code: "MI2", major: "Hệ thống thông tin quản lý", score: 70.05 },
+            { code: "EE1", major: "Kỹ thuật Điện", score: 66.57 },
+            { code: "ET-E4", major: "Kỹ thuật Điện tử - Viễn thông (CT tiên tiến)", score: 66.57 },
+            { code: "EE-EP", major: "Tin học công nghiệp và Tự động hóa (CT Việt - Pháp PFIEV)", score: 65.26 },
+            { code: "TE1", major: "Kỹ thuật Ô tô", score: 64.13 },
+            { code: "ME-E1", major: "Kỹ thuật Cơ điện tử (CT tiên tiến)", score: 62.78 },
+            { code: "ET-E16", major: "Truyền thông số và Kỹ thuật đa phương tiện (CT tiên tiến)", score: 62.21 },
+            { code: "ME2", major: "Kỹ thuật Cơ khí", score: 62.21 },
+            { code: "TE3", major: "Kỹ thuật Hàng không", score: 62.12 },
+            { code: "EE-E18", major: "Hệ thống điện và năng lượng tái tạo (CT tiên tiến)", score: 61.93 },
+            { code: "ET-LUH", major: "Điện tử - Viễn thông (Hợp tác với ĐH Leibniz Hannover)", score: 61.89 },
+            { code: "PH1", major: "Vật lý kỹ thuật", score: 61.23 },
+            { code: "ET2", major: "Kỹ thuật Y sinh", score: 60.81 },
+            { code: "TE2", major: "Kỹ thuật Cơ khí động lực", score: 60.48 },
+            { code: "ME-LUH", major: "Cơ điện tử (Hợp tác với ĐH Leibniz Hannover)", score: 60.20 },
+            { code: "TE-EP", major: "Cơ khí hàng không (Chương trình Việt - Pháp PFIEV)", score: 58.56 },
+            { code: "ME-NUT", major: "Cơ điện tử (Hợp tác với ĐH Công nghệ Nagaoka)", score: 57.81 },
+            { code: "ET-E5", major: "Kỹ thuật Y sinh (CT tiên tiến)", score: 57.34 },
+            { code: "HE1", major: "Kỹ thuật Nhiệt", score: 56.83 },
+            { code: "MS1", major: "Kỹ thuật Vật liệu", score: 56.45 },
+            { code: "PH3", major: "Vật lý Y khoa", score: 55.56 },
+            { code: "TE-E2", major: "Kỹ thuật Ô tô (CT tiên tiến)", score: 55.47 },
+            { code: "MS3", major: "Công nghệ vật liệu Polyme và Compozit", score: 55.37 },
+            { code: "PH2", major: "Kỹ thuật hạt nhân", score: 55.00 },
+            { code: "ME-GU", major: "Cơ khí - Chế tạo máy (Hợp tác với ĐH Griffith)", score: 55.00 },
+            { code: "MS5", major: "Kỹ thuật in", score: 55.00 },
+            { code: "CH1", major: "Kỹ thuật Hoá học", score: 55.00 },
+            { code: "MS-E3", major: "Khoa học và kỹ thuật vật liệu (CT tiên tiến)", score: 55.00 },
+            { code: "BF2", major: "Kỹ thuật Thực phẩm", score: 55.00 },
+            { code: "CH2", major: "Hoá học", score: 55.00 },
+            { code: "BF1", major: "Kỹ thuật Sinh học", score: 55.00 },
+            { code: "TX1", major: "Công nghệ Dệt - May", score: 55.00 },
+            { code: "EV1", major: "Kỹ thuật Môi trường", score: 55.00 },
+            { code: "EV2", major: "Quản lý Tài nguyên và Môi trường", score: 55.00 },
+            { code: "CH-E11", major: "Kỹ thuật Hóa dược (CT tiên tiến)", score: 55.00 },
+            { code: "BF-E12", major: "Kỹ thuật Thực phẩm (CT tiên tiến)", score: 55.00 },
+            { code: "BF-E19", major: "Kỹ thuật Sinh học (CT tiên tiến)", score: 55.00 },
+            { code: "FL3", major: "Tiếng Trung KHKT và Công nghệ", score: 64.59 },
+            { code: "EM3", major: "Quản trị kinh doanh", score: 61.94 },
+            { code: "EM5", major: "Tài chính - Ngân hàng", score: 61.94 },
+            { code: "FL1", major: "Tiếng Anh KHKT và Công nghệ", score: 61.94 },
+            { code: "FL2", major: "Tiếng Anh chuyên nghiệp quốc tế", score: 61.94 },
+            { code: "EM4", major: "Kế toán", score: 61.14 },
+            { code: "EM2", major: "Quản lý công nghiệp", score: 60.05 },
+            { code: "EM-E14", major: "Logistics và Quản lý chuỗi cung ứng (CT tiên tiến)", score: 59.16 },
+            { code: "EM1", major: "Quản lý năng lượng", score: 59.11 },
+            { code: "ED2", major: "Công nghệ giáo dục", score: 57.22 },
+            { code: "ED3", major: "Quản lý giáo dục", score: 56.75 },
+            { code: "EM-E13", major: "Phân tích kinh doanh (CT tiên tiến)", score: 56.09 },
+            { code: "TROY-IT", major: "Khoa học máy tính - Hợp tác với ĐH Troy (Hoa Kỳ)", score: 55.00 },
+            { code: "TROY-BA", major: "Quản trị kinh doanh - Hợp tác với ĐH Troy (Hoa Kỳ)", score: 55.00 }
         ];
 
         function formatScore(num) { return parseFloat(num).toFixed(2); }
@@ -378,7 +432,28 @@
             scoreEl.innerText = formatScore(score);
         }
 
-        // Logic disable/enable
+        // --- Logic mới: Mutual Exclusivity for Main Achievement ---
+        function handleMainAchievementChange(type) {
+            // Danh sách các loại thành tích chính (trừ specialized)
+            const mainTypes = ['hsg', 'khkt', 'olympia'];
+            const currentVal = parseFloat(document.getElementById(`score_${type}`).value);
+
+            // Nếu người dùng chọn giá trị > 0 cho một loại
+            if (currentVal > 0) {
+                // Reset các loại khác về 0
+                mainTypes.forEach(t => {
+                    if (t !== type) {
+                        const otherSelect = document.getElementById(`score_${t}`);
+                        if (otherSelect.value != "0") {
+                             otherSelect.value = "0";
+                             toggleBonusSection(t);
+                        }
+                    }
+                });
+            }
+            toggleBonusSection(type);
+        }
+
         function toggleBonusSection(type) {
             const mainScore = parseFloat(document.getElementById(`score_${type}`).value);
             const bonusOptions = document.getElementById(`${type}-options`);
@@ -386,18 +461,12 @@
             const inputs = document.querySelectorAll(`.bonus-${type}`);
 
             if (mainScore > 0) {
-                // Main is selected -> Disable bonus options by default
                 bonusOptions.classList.add('disabled-section');
                 overrideContainer.classList.remove('hidden');
-                
-                // Uncheck all
                 inputs.forEach(input => input.checked = false);
             } else {
-                // Main is 0 -> Enable bonus
                 bonusOptions.classList.remove('disabled-section');
                 overrideContainer.classList.add('hidden');
-                
-                // Reset manual override checkbox
                 const overrideCheckbox = overrideContainer.querySelector('input');
                 if(overrideCheckbox) overrideCheckbox.checked = false;
             }
@@ -409,7 +478,6 @@
                 bonusOptions.classList.remove('disabled-section');
             } else {
                 bonusOptions.classList.add('disabled-section');
-                // Uncheck items if re-disabled
                 document.querySelectorAll(`.bonus-${type}`).forEach(input => input.checked = false);
             }
         }
@@ -427,7 +495,6 @@
             const olympia = parseFloat(document.getElementById("score_olympia").value) || 0;
             const specialized = document.getElementById("specialized").checked ? 20 : 0;
             
-            // Logic: Cộng dồn điểm các nhóm, nhưng max 50
             const achievementRaw = hsg + khkt + olympia + specialized;
             const achievement = Math.min(achievementRaw, 50);
 
@@ -467,17 +534,22 @@
                 return;
             }
 
-            // --- Case 2: Success (Potential) ---
+            // --- Case 2: Success ---
             headerBg.className = "bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-white text-center";
             resultTitle.innerText = "KẾT QUẢ DỰ TÍNH";
             resultSubtitle.innerText = "Tổng điểm XTTN (Giả định ĐẠT PV)";
             setScoreCircle(hsnl);
             finalScoreEl.nextElementSibling.innerText = "/ 100";
 
-            // Suggestions
-            const boostedScore = hsnl + 15;
-            const suggestions = majorScores.filter(m => m.score <= boostedScore)
-                                .map(m => `<li class="flex justify-between text-sm py-1 border-b"><span>${m.major}</span><span class="font-bold text-blue-600">${m.score}</span></li>`).join("");
+            // Suggestions based on strict 2025 scores
+            const suggestions = majorScores2025.filter(m => m.score <= hsnl)
+                .map(m => `<li class="flex justify-between text-sm py-2 border-b border-blue-100 last:border-0">
+                    <div class="flex-1 pr-2">
+                        <span class="font-bold text-slate-700 bg-slate-100 px-1 rounded text-xs mr-1">${m.code}</span>
+                        <span class="text-slate-700">${m.major}</span>
+                    </div>
+                    <span class="font-bold text-blue-600 whitespace-nowrap">${m.score}</span>
+                </li>`).join("");
 
             resultContent.innerHTML = `
                 <div class="bg-purple-50 text-purple-800 text-xs p-3 rounded mb-4 border border-purple-200">
@@ -488,7 +560,7 @@
                      <div class="bg-slate-50 p-2 rounded border">Thành tích<br><b>${formatScore(achievement)}</b></div>
                      <div class="bg-slate-50 p-2 rounded border">Thưởng<br><b>${formatScore(bonus)}</b></div>
                 </div>
-                ${suggestions ? `<div class="bg-blue-50 p-4 rounded-lg"><h4 class="font-bold text-blue-800 mb-2 text-sm">Gợi ý ngành (Dựa theo điểm 2024)</h4><ul class="space-y-1">${suggestions}</ul></div>` : ''}
+                ${suggestions ? `<div class="bg-blue-50 p-4 rounded-lg"><h4 class="font-bold text-blue-800 mb-2 text-sm">Ngành có thể đỗ (Dựa trên điểm 2025)</h4><ul class="space-y-0">${suggestions}</ul></div>` : '<div class="bg-red-50 p-4 rounded-lg text-red-600 text-sm font-bold">Chưa đủ điểm chuẩn 2025 của bất kỳ ngành nào.</div>'}
             `;
             setTimeout(() => resultContainer.scrollIntoView({behavior: 'smooth'}), 100);
         }
