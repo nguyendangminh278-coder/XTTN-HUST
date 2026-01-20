@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính điểm XTTN 2025 - Bách Khoa Hà Nội</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        select { -webkit-appearance: none; appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
+        .disabled-section { opacity: 0.5; pointer-events: none; filter: grayscale(100%); }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hust: { red: '#b91c1c', dark: '#7f1d1d', light: '#fee2e2' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-slate-800 antialiased selection:bg-hust-red selection:text-white pb-24">
+
+    <!-- Hero Header -->
+    <div class="bg-gradient-to-r from-hust-dark to-hust-red text-white pb-20 pt-10 px-4 shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-white opacity-5 rounded-full blur-3xl"></div>
+        <div class="container mx-auto max-w-4xl text-center relative z-10">
+            <div class="inline-block bg-white/20 backdrop-blur-sm p-3 rounded-full mb-4 shadow-inner">
+                <i class="fas fa-graduation-cap text-3xl"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-wide mb-2">Tính Điểm XTTN 2025</h1>
+            <p class="text-hust-light font-light text-lg">Cập nhật theo QĐ 3560/QĐ-ĐHBK (Áp dụng từ 2025)</p>
+        </div>
+    </div>
+
+    <div class="container mx-auto max-w-4xl px-4 -mt-16 relative z-20 space-y-6">
+        
+        <!-- Info Alert -->
+        <div class="bg-white rounded-xl shadow-md border-l-4 border-yellow-400 p-4 animate-fade-in">
+            <div class="flex items-start">
+                <div class="flex-shrink-0 text-yellow-500 mt-1"><i class="fas fa-info-circle text-xl"></i></div>
+                <div class="ml-3 flex-1">
+                    <h3 class="text-sm font-bold text-slate-800">Quy định mới 2025</h3>
+                    <p class="text-xs text-slate-600 mt-1">
+                        - <b>Điểm Thành tích</b> được cộng dồn các mục, tối đa 50đ.<br>
+                        - <b>Lưu ý:</b> Nếu đã dùng giải để tính điểm Thành tích chính thì KHÔNG được dùng giải đó tính điểm Thưởng (Trừ khi là giải khác môn/năm).<br>
+                        - <b>Điểm XTTN</b> = Điểm HSNL (sau khi đạt vòng phỏng vấn).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Điểm Học Bạ -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden animate-fade-in" style="animation-delay: 0.1s;">
+            <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-3 font-bold shadow-sm">1</div>
+                <div>
+                    <h3 class="text-lg font-bold text-slate-700">Điểm Học Bạ</h3>
+                    <p class="text-xs text-slate-500">Trung bình 6 học kỳ (Lớp 10, 11, 12)</p>
+                </div>
+                <span class="ml-auto text-xs font-medium bg-blue-100 text-blue-800 py-1 px-2 rounded-full">Max 40đ</span>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group">
+                    <label class="block text-sm font-semibold text-slate-600 mb-2"><i class="fas fa-calculator mr-1"></i> Toán</label>
+                    <input type="number" id="math" min="0" max="10" step="0.1" placeholder="0.0" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-3 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                </div>
+                <div class="group">
+                    <label class="block text-sm font-semibold text-slate-600 mb-2"><i class="fas fa-book mr-1"></i> Ngữ Văn</label>
+                    <input type="number" id="literature" min="0" max="10" step="0.1" placeholder="0.0" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-3 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                </div>
+                <div class="group">
+                    <label class="block text-sm font-semibold text-slate-600 mb-2"><i class="fas fa-flask mr-1"></i> Môn thứ 3</label>
+                    <input type="number" id="subject3" min="0" max="10" step="0.1" placeholder="Lý/Hóa/Sinh/Tin" class="w-full bg-slate-50 border border-slate-300 text-slate-900 rounded-xl p-3 focus:ring-blue-500 focus:border-blue-500 transition-all">
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Thành tích chính -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden animate-fade-in" style="animation-delay: 0.2s;">
+            <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-hust-light text-hust-red flex items-center justify-center mr-3 font-bold shadow-sm">2</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-700">Thành tích chính</h3>
+                        <p class="text-xs text-slate-500">Được cộng dồn các nhóm (VD: HSG + Chuyên)</p>
+                    </div>
+                </div>
+                <span class="ml-auto text-xs font-medium bg-red-100 text-red-800 py-1 px-2 rounded-full">Max 50đ</span>
+            </div>
+            
+            <div class="p-6 space-y-4">
+                <!-- Group 1: HSG -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <label class="block text-sm font-bold text-slate-700 mb-2">1. Học sinh giỏi (Toán/Lý/Hóa/Sinh/Tin/Ngoại ngữ/Tổ hợp)</label>
+                    <select id="score_hsg" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="toggleBonusSection('hsg')">
+                        <option value="0">-- Không có --</option>
+                        <option value="50">Giải Nhất Quốc gia (50đ)</option>
+                        <option value="45">Giải Nhì Quốc gia (45đ)</option>
+                        <option value="40">Giải Ba Quốc gia (40đ)</option>
+                        <option value="35">Giải Khuyến khích Quốc gia (35đ)</option>
+                        <option value="30">Giải Nhất Tỉnh/Thành phố (30đ)</option>
+                        <option value="25">Giải Nhì Tỉnh/Thành phố (25đ)</option>
+                        <option value="20">Giải Ba Tỉnh/Thành phố (20đ)</option>
+                        <option value="15">Giải Khuyến khích Tỉnh/Thành phố (15đ)</option>
+                    </select>
+                </div>
+
+                <!-- Group 2: KHKT -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <label class="block text-sm font-bold text-slate-700 mb-2">2. Khoa học kỹ thuật (ViSEF/ISEF)</label>
+                    <select id="score_khkt" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="toggleBonusSection('khkt')">
+                        <option value="0">-- Không có --</option>
+                        <option value="50">Giải Quốc tế (50đ)</option>
+                        <option value="45">Giải Nhất Quốc gia (45đ)</option>
+                        <option value="40">Giải Nhì Quốc gia (40đ)</option>
+                        <option value="35">Giải Ba Quốc gia (35đ)</option>
+                        <option value="30">Giải Tư/KK Quốc gia (30đ)</option>
+                        <option value="25">Giải Nhất Tỉnh (25đ)</option>
+                        <option value="20">Giải Nhì Tỉnh (20đ)</option>
+                        <option value="15">Giải Ba Tỉnh (15đ)</option>
+                    </select>
+                </div>
+
+                <!-- Group 3: Olympia -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <label class="block text-sm font-bold text-slate-700 mb-2">3. Đường lên đỉnh Olympia</label>
+                    <select id="score_olympia" class="w-full p-3 bg-white border border-slate-300 rounded-lg focus:ring-hust-red focus:border-hust-red" onchange="toggleBonusSection('olympia')">
+                        <option value="0">-- Không có --</option>
+                        <option value="50">Vòng thi Năm (50đ)</option>
+                        <option value="40">Vòng thi Quý (40đ)</option>
+                        <option value="30">Vòng thi Tháng (30đ)</option>
+                    </select>
+                </div>
+
+                <!-- Group 4: Chuyên -->
+                <label class="flex items-center p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors">
+                    <input type="checkbox" id="specialized" class="w-5 h-5 text-blue-600 rounded focus:ring-blue-500 mr-3">
+                    <div>
+                        <span class="font-bold text-slate-700 text-sm">4. Học sinh hệ Chuyên</span>
+                        <span class="text-xs text-slate-500 ml-2">(Toán, Lý, Hóa, Sinh, Tin, Ngoại ngữ) <b>+20đ</b></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Section 3: Thành tích thưởng -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden animate-fade-in" style="animation-delay: 0.3s;">
+             <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center">
+                <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 font-bold shadow-sm">3</div>
+                <h3 class="text-lg font-bold text-slate-700">Điểm Thưởng</h3>
+                <span class="ml-auto text-xs font-medium bg-emerald-100 text-emerald-800 py-1 px-2 rounded-full">Max 10đ</span>
+            </div>
+
+            <div class="p-6 space-y-6">
+                <!-- HSG Bonus -->
+                <div class="border border-slate-200 rounded-xl p-4 relative" id="bonus-group-hsg">
+                    <div class="flex justify-between items-center mb-2">
+                         <h4 class="font-bold text-slate-800 flex items-center text-sm"><i class="fas fa-plus-circle text-emerald-500 mr-2"></i> HSG (Môn/Năm KHÁC)</h4>
+                         <!-- Toggle switch for enabling if user really has different award -->
+                         <div id="hsg-override-container" class="hidden">
+                             <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" onchange="manualEnable('hsg', this)" class="sr-only peer">
+                                <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
+                                <span class="ms-2 text-xs font-medium text-gray-900">Tôi có giải khác</span>
+                            </label>
+                         </div>
+                    </div>
+                    
+                    <div id="hsg-options" class="grid grid-cols-2 md:grid-cols-4 gap-2 transition-opacity duration-300">
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="8"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">QT/Nhất QG (+8)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="7"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">Nhì QG (+7)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="6"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">Ba QG (+6)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="5"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">KK QG/Năm (+5)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="4"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">Nhất Tỉnh/Quý (+4)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="3"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">Nhì Tỉnh/Tháng (+3)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="2"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">Ba Tỉnh/Tuần (+2)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-hsg peer sr-only-input" value="1"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-emerald-50 peer-checked:border-emerald-500 text-center">KK Tỉnh (+1)</div></label>
+                    </div>
+                </div>
+
+                <!-- KHKT Bonus -->
+                 <div class="border border-slate-200 rounded-xl p-4 relative" id="bonus-group-khkt">
+                    <div class="flex justify-between items-center mb-2">
+                         <h4 class="font-bold text-slate-800 flex items-center text-sm"><i class="fas fa-atom text-purple-500 mr-2"></i> KHKT (Đề tài KHÁC)</h4>
+                         <div id="khkt-override-container" class="hidden">
+                             <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" onchange="manualEnable('khkt', this)" class="sr-only peer">
+                                <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
+                                <span class="ms-2 text-xs font-medium text-gray-900">Tôi có giải khác</span>
+                            </label>
+                         </div>
+                    </div>
+                     <div id="khkt-options" class="grid grid-cols-2 md:grid-cols-4 gap-2 transition-opacity duration-300">
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="8"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">QT (+8)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="7"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">Nhất QG (+7)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="6"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">Nhì QG (+6)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="5"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">Ba QG (+5)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="4"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">KK QG (+4)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="3"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">Nhất Tỉnh (+3)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="2"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">Nhì Tỉnh (+2)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-khkt peer sr-only-input" value="1"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-purple-50 peer-checked:border-purple-500 text-center">Ba Tỉnh (+1)</div></label>
+                     </div>
+                </div>
+
+                 <!-- Olympia Bonus -->
+                 <div class="border border-slate-200 rounded-xl p-4 relative" id="bonus-group-olympia">
+                    <div class="flex justify-between items-center mb-2">
+                         <h4 class="font-bold text-slate-800 flex items-center text-sm"><i class="fas fa-wreath text-yellow-500 mr-2"></i> Olympia (Năm KHÁC)</h4>
+                         <div id="olympia-override-container" class="hidden">
+                             <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" onchange="manualEnable('olympia', this)" class="sr-only peer">
+                                <div class="relative w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-yellow-500"></div>
+                                <span class="ms-2 text-xs font-medium text-gray-900">Tôi có giải khác</span>
+                            </label>
+                         </div>
+                    </div>
+                     <div id="olympia-options" class="grid grid-cols-2 md:grid-cols-4 gap-2 transition-opacity duration-300">
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-olympia peer sr-only-input" value="5"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-yellow-50 peer-checked:border-yellow-500 text-center">Vòng Năm (+5)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-olympia peer sr-only-input" value="4"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-yellow-50 peer-checked:border-yellow-500 text-center">Vòng Quý (+4)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-olympia peer sr-only-input" value="3"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-yellow-50 peer-checked:border-yellow-500 text-center">Vòng Tháng (+3)</div></label>
+                        <label class="cursor-pointer select-none"><input type="checkbox" class="bonus bonus-olympia peer sr-only-input" value="2"><div class="text-xs p-2 rounded border hover:bg-slate-50 peer-checked:bg-yellow-50 peer-checked:border-yellow-500 text-center">Vòng Tuần (+2)</div></label>
+                     </div>
+                </div>
+
+                <!-- IELTS & Others -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- IELTS -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Chứng chỉ IELTS (hoặc tương đương)</label>
+                        <select id="score_ielts" class="w-full p-2 bg-white border border-slate-300 rounded text-sm">
+                            <option value="0">-- Không có --</option>
+                            <option value="7">8.0 trở lên (+7đ)</option>
+                            <option value="6">7.5 (+6đ)</option>
+                            <option value="5">7.0 (+5đ)</option>
+                            <option value="4">6.5 (+4đ)</option>
+                            <option value="3">6.0 (+3đ)</option>
+                            <option value="2">5.5 (+2đ)</option>
+                            <option value="1">5.0 (+1đ)</option>
+                        </select>
+                    </div>
+                    <!-- Talent -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Năng khiếu / Văn nghệ / Thể thao</label>
+                        <select id="score_talent" class="w-full p-2 bg-white border border-slate-300 rounded text-sm">
+                            <option value="0">-- Không có --</option>
+                            <option value="6">Nhất QG / HCV QG (+6đ)</option>
+                            <option value="5">Nhì QG / HCB QG (+5đ)</option>
+                            <option value="4">Ba QG / HCĐ QG (+4đ)</option>
+                            <option value="3">Nhất Tỉnh / HCV Tỉnh (+3đ)</option>
+                            <option value="2">Nhì Tỉnh / HCB Tỉnh (+2đ)</option>
+                            <option value="1">Ba Tỉnh / HCĐ Tỉnh (+1đ)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Social -->
+                 <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Hoạt động xã hội / Tình nguyện</label>
+                    <div class="flex gap-4">
+                        <label class="inline-flex items-center text-sm cursor-pointer">
+                            <input type="radio" name="social" value="0" checked class="mr-2"> Không
+                        </label>
+                        <label class="inline-flex items-center text-sm cursor-pointer">
+                            <input type="radio" name="social" value="3" class="mr-2"> Bằng khen (+3)
+                        </label>
+                        <label class="inline-flex items-center text-sm cursor-pointer">
+                            <input type="radio" name="social" value="1" class="mr-2"> Giấy khen / Hiến máu (+1)
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Lưu ý Phỏng Vấn (Đã sửa: Bỏ input, chỉ hiển thị thông báo) -->
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden animate-fade-in" style="animation-delay: 0.4s;">
+            <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center mr-3 font-bold shadow-sm"><i class="fas fa-exclamation"></i></div>
+                <h3 class="text-lg font-bold text-slate-700">Lưu ý về Phỏng vấn</h3>
+            </div>
+            <div class="p-6">
+                <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded text-sm text-purple-900">
+                    <h4 class="font-bold mb-2">Điều kiện cần và đủ:</h4>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li><b>Sơ tuyển:</b> Điểm Hồ sơ năng lực (HSNL) phải <span class="text-red-600 font-bold">≥ 55 điểm</span> mới được tham gia phỏng vấn.</li>
+                        <li><b>Kết quả:</b> Điểm phỏng vấn phải <span class="text-red-600 font-bold">≥ 10/20 điểm</span> thì mới được công nhận điểm XTTN.</li>
+                        <li><b>Điểm XTTN:</b> Bằng chính điểm HSNL của bạn (sau khi đã ĐẠT vòng phỏng vấn).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sticky Action Bar -->
+        <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 md:static md:bg-transparent md:border-0 md:p-0 z-50">
+            <div class="container mx-auto max-w-4xl flex flex-row gap-4 justify-center">
+                <button onclick="calculateScore()" class="flex-1 md:flex-none bg-hust-red hover:bg-red-800 text-white font-bold py-4 px-10 rounded-xl shadow-lg transform transition active:scale-95 flex items-center justify-center text-lg">
+                    <i class="fas fa-calculator mr-2"></i> TÍNH ĐIỂM
+                </button>
+                <button onclick="saveResult()" class="flex-none bg-slate-700 hover:bg-slate-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg transform transition active:scale-95">
+                    <i class="fas fa-save"></i>
+                </button>
+            </div>
+        </div>
+        <div class="h-20 md:hidden"></div>
+
+        <!-- Result Display -->
+        <div id="result-container" class="hidden animate-fade-in scroll-mt-24">
+            <div class="bg-white border border-slate-100 rounded-2xl shadow-xl overflow-hidden">
+                 <div id="result-header-bg" class="bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-white text-center">
+                     <h3 class="text-2xl font-bold mb-1" id="result-title">KẾT QUẢ DỰ TÍNH</h3>
+                     <p class="opacity-90" id="result-subtitle">Tổng điểm xét tuyển tài năng</p>
+                 </div>
+                 <div class="p-8 text-center">
+                     <div class="mb-6 relative inline-block">
+                         <div class="w-40 h-40 rounded-full border-8 border-slate-100 flex items-center justify-center mx-auto bg-white shadow-inner relative">
+                             <svg class="absolute top-0 left-0 w-full h-full transform -rotate-90">
+                                 <circle cx="50%" cy="50%" r="70" stroke="#cbd5e1" stroke-width="8" fill="none" class="opacity-20"></circle>
+                                 <circle id="score-circle" cx="50%" cy="50%" r="70" stroke="#b91c1c" stroke-width="8" fill="none" stroke-dasharray="440" stroke-dashoffset="440" class="transition-all duration-1000 ease-out"></circle>
+                             </svg>
+                             <div class="text-center z-10">
+                                 <span id="final-score" class="block text-4xl font-black text-hust-red">0</span>
+                                 <span class="text-slate-400 text-sm font-bold">/ 100</span>
+                             </div>
+                         </div>
+                     </div>
+                     <div id="result-content" class="text-left space-y-4"></div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Log -->
+        <div class="bg-slate-100 rounded-xl p-4 border border-slate-200">
+            <label class="flex items-center font-bold mb-2 text-slate-500 text-sm uppercase"><i class="fas fa-history mr-2"></i> Lịch sử</label>
+            <textarea id="log" readonly class="w-full h-32 p-3 bg-white border border-slate-200 rounded-lg text-xs font-mono resize-none custom-scroll shadow-inner"></textarea>
+        </div>
+        
+        <footer class="text-center text-slate-400 text-xs py-6">© 2025 HSA Education Tool</footer>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        const majorScores = [
+            { major: "Khoa học Dữ liệu và Trí tuệ nhân tạo", score: 104.58 },
+            { major: "CNNT: Khoa học Máy tính", score: 103.89 },
+            { major: "CNNT: Kỹ thuật Máy tính", score: 98.30 },
+            { major: "An toàn không gian số", score: 102.60 },
+            { major: "Kỹ thuật điều khiển - Tự động hóa", score: 86.70 }
+        ];
+        
+        const majorScores2023 = [
+            { major: "Khoa học Dữ liệu & AI", score: 98.42 },
+            { major: "Khoa học Máy tính", score: 90.17 },
+            { major: "Kỹ thuật Máy tính", score: 85.35 }
+        ];
+
+        function formatScore(num) { return parseFloat(num).toFixed(2); }
+
+        function setScoreCircle(score, colorClass = "text-hust-red", strokeColor = "#b91c1c") {
+            const circle = document.getElementById('score-circle');
+            const circumference = 440; 
+            const offset = circumference - (Math.min(score, 100) / 100) * circumference;
+            circle.style.stroke = strokeColor;
+            circle.style.strokeDashoffset = offset;
+            
+            const scoreEl = document.getElementById("final-score");
+            scoreEl.className = `block text-4xl font-black ${colorClass}`;
+            scoreEl.innerText = formatScore(score);
+        }
+
+        // Logic disable/enable
+        function toggleBonusSection(type) {
+            const mainScore = parseFloat(document.getElementById(`score_${type}`).value);
+            const bonusOptions = document.getElementById(`${type}-options`);
+            const overrideContainer = document.getElementById(`${type}-override-container`);
+            const inputs = document.querySelectorAll(`.bonus-${type}`);
+
+            if (mainScore > 0) {
+                // Main is selected -> Disable bonus options by default
+                bonusOptions.classList.add('disabled-section');
+                overrideContainer.classList.remove('hidden');
+                
+                // Uncheck all
+                inputs.forEach(input => input.checked = false);
+            } else {
+                // Main is 0 -> Enable bonus
+                bonusOptions.classList.remove('disabled-section');
+                overrideContainer.classList.add('hidden');
+                
+                // Reset manual override checkbox
+                const overrideCheckbox = overrideContainer.querySelector('input');
+                if(overrideCheckbox) overrideCheckbox.checked = false;
+            }
+        }
+
+        function manualEnable(type, checkbox) {
+            const bonusOptions = document.getElementById(`${type}-options`);
+            if (checkbox.checked) {
+                bonusOptions.classList.remove('disabled-section');
+            } else {
+                bonusOptions.classList.add('disabled-section');
+                // Uncheck items if re-disabled
+                document.querySelectorAll(`.bonus-${type}`).forEach(input => input.checked = false);
+            }
+        }
+
+        function calculateScore() {
+            // 1. Academic Score (Max 40)
+            const math = parseFloat(document.getElementById("math").value) || 0;
+            const lit = parseFloat(document.getElementById("literature").value) || 0;
+            const sub3 = parseFloat(document.getElementById("subject3").value) || 0;
+            const academic = ((math * 3 + lit + sub3 * 2) * 4) / 6;
+
+            // 2. Achievement Score (Max 50)
+            const hsg = parseFloat(document.getElementById("score_hsg").value) || 0;
+            const khkt = parseFloat(document.getElementById("score_khkt").value) || 0;
+            const olympia = parseFloat(document.getElementById("score_olympia").value) || 0;
+            const specialized = document.getElementById("specialized").checked ? 20 : 0;
+            
+            // Logic: Cộng dồn điểm các nhóm, nhưng max 50
+            const achievementRaw = hsg + khkt + olympia + specialized;
+            const achievement = Math.min(achievementRaw, 50);
+
+            // 3. Bonus Score (Max 10)
+            let bonusRaw = 0;
+            document.querySelectorAll(".bonus:checked").forEach(cb => bonusRaw += parseFloat(cb.value));
+            
+            const ielts = parseFloat(document.getElementById("score_ielts").value) || 0;
+            const talent = parseFloat(document.getElementById("score_talent").value) || 0;
+            const social = parseFloat(document.querySelector('input[name="social"]:checked').value) || 0;
+            
+            bonusRaw += ielts + talent + social;
+            const bonus = Math.min(bonusRaw, 10);
+
+            // 4. Total HSNL
+            let hsnl = Math.min(academic + achievement + bonus, 100);
+
+            // 5. Result Display
+            const resultContainer = document.getElementById("result-container");
+            const headerBg = document.getElementById("result-header-bg");
+            const resultTitle = document.getElementById("result-title");
+            const resultSubtitle = document.getElementById("result-subtitle");
+            const resultContent = document.getElementById("result-content");
+            const finalScoreEl = document.getElementById("final-score");
+
+            resultContainer.classList.remove("hidden");
+
+            // --- Case 1: Fail HSNL ---
+            if (hsnl < 55) {
+                headerBg.className = "bg-gradient-to-r from-slate-500 to-slate-600 p-6 text-white text-center";
+                resultTitle.innerText = "KHÔNG ĐẠT SƠ TUYỂN";
+                resultSubtitle.innerText = "HSNL < 55";
+                setScoreCircle(hsnl, "text-slate-600", "#475569");
+                finalScoreEl.nextElementSibling.innerText = "/ 100";
+                resultContent.innerHTML = `<div class="text-red-600 font-bold p-3 bg-red-50 rounded">Điểm HSNL: ${formatScore(hsnl)}. Chưa đủ 55 điểm để vào vòng Phỏng vấn.</div>`;
+                setTimeout(() => resultContainer.scrollIntoView({behavior: 'smooth'}), 100);
+                return;
+            }
+
+            // --- Case 2: Success (Potential) ---
+            headerBg.className = "bg-gradient-to-r from-emerald-500 to-teal-500 p-6 text-white text-center";
+            resultTitle.innerText = "KẾT QUẢ DỰ TÍNH";
+            resultSubtitle.innerText = "Tổng điểm XTTN (Giả định ĐẠT PV)";
+            setScoreCircle(hsnl);
+            finalScoreEl.nextElementSibling.innerText = "/ 100";
+
+            // Suggestions
+            const boostedScore = hsnl + 15;
+            const suggestions = majorScores.filter(m => m.score <= boostedScore)
+                                .map(m => `<li class="flex justify-between text-sm py-1 border-b"><span>${m.major}</span><span class="font-bold text-blue-600">${m.score}</span></li>`).join("");
+
+            resultContent.innerHTML = `
+                <div class="bg-purple-50 text-purple-800 text-xs p-3 rounded mb-4 border border-purple-200">
+                    <i class="fas fa-info-circle mr-1"></i> <b>Lưu ý:</b> Đây là điểm HSNL của bạn. Nếu bạn qua vòng phỏng vấn (≥10đ), đây sẽ là điểm XTTN chính thức.
+                </div>
+                <div class="grid grid-cols-3 gap-2 text-center text-xs mb-4 font-mono">
+                     <div class="bg-slate-50 p-2 rounded border">Học bạ<br><b>${formatScore(academic)}</b></div>
+                     <div class="bg-slate-50 p-2 rounded border">Thành tích<br><b>${formatScore(achievement)}</b></div>
+                     <div class="bg-slate-50 p-2 rounded border">Thưởng<br><b>${formatScore(bonus)}</b></div>
+                </div>
+                ${suggestions ? `<div class="bg-blue-50 p-4 rounded-lg"><h4 class="font-bold text-blue-800 mb-2 text-sm">Gợi ý ngành (Dựa theo điểm 2024)</h4><ul class="space-y-1">${suggestions}</ul></div>` : ''}
+            `;
+            setTimeout(() => resultContainer.scrollIntoView({behavior: 'smooth'}), 100);
+        }
+
+        function saveResult() {
+            const math = document.getElementById("math").value;
+            const hsg = document.getElementById("score_hsg").options[document.getElementById("score_hsg").selectedIndex].text;
+            const score = document.getElementById("final-score").innerText;
+            const time = new Date().toLocaleTimeString('vi-VN', {hour: '2-digit', minute:'2-digit'});
+            document.getElementById("log").value += `[${time}] XTTN: ${score} | Toán: ${math} | ${hsg}\n`;
+        }
+    </script>
+</body>
+</html>
